@@ -11,7 +11,7 @@ A Vue component for generating forms from GateSchema.
 
 
 ## Quick Start  
-In this example use iview, and stateform-iview as UI layer
+In this example use [iview](https://github.com/iview/iview), and [stateform-iview](https://github.com/stateform/stateform-iview) as UI layer
 ```js  
 // file: GateSchemaForm.js
 import Vue from 'vue'
@@ -149,9 +149,9 @@ const schema = _
 ```
 
 ## Q&A  
-### Custom validation  
+### Custom validation ?  
 This form component is GateSchema driven. You should define your GateSchema keyword for custom validations  
-### Conditional fields  
+### Conditional fields ?  
 Use `switch` keyword  
 ```js  
 const schema = _
@@ -203,11 +203,8 @@ const schema = _
   ])
 ```
 
-### Custom component  
+### Custom component ?  
 Extend the StateForm implementation  
-
-
-
 
 ## License  
 MIT
