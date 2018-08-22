@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+- "8"
+- node
+sudo: false
+script: "npm run test-coverage"
+after_script: "npm install coveralls@3 && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage"
