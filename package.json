@@ -1,10 +1,15 @@
 {
   "name": "gateschema-form-vue",
   "version": "0.1.0",
-  "description": "",
+  "description": "A Vue component for generating forms from GateSchema.",
+  "keywords": [
+    "Vue",
+    "form",
+    "generator"
+  ],
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "browser": "dist/umd/index.js",
+  "browser": "dist/umd/gateschema-form-vue.js",
   "files": [
     "dist"
   ],

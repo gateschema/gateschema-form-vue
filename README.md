@@ -7,36 +7,58 @@ A Vue component for generating forms from GateSchema.
 * Auto updating form data when user inputs value     
 * Conditional fields  
 * Able to change schema dynamically  
-* Extenable, custom form component  
+* Extendible, custom form component  
 
 
 ## Quick Start  
 In this example use [iview](https://github.com/iview/iview), and [stateform-iview](https://github.com/stateform/stateform-iview) as UI layer
 ```js  
 // file: GateSchemaForm.js
+
 import Vue from 'vue'
-// iview css
-import 'iview/dist/styles/iview.css'
 // stateform implementation
 import createStateForm from '@stateform/iview'
 import "@stateform/iview/dist/stateform-iview.css"
 
 import { createForm } from 'gateschema-form-vue'
 
+// 1. creae StateForm component
+// see https://github.com/stateform/StateForm-Specification for more details
 const StateForm = createStateForm({
-  // stateform options
+  upload: {
+    handleUpload(file, cb) {
+      // custom implementation
+      setTimeout(() => {
+        cb({
+          status: 'done', // 'done' | 'error',
+          url: 'http://....'
+        })
+      }, 1000)
+    },
+    handleRemove(file) {
+
+    }
+  },
+  components: {
+    // custom components
+  }
 })
+// 2. create GateSchemaForm component
 const GateSchemaForm = createForm({
   StateForm
 })
-
+// register
 Vue.component('GateSchemaForm', GateSchemaForm)
 ```
 
 ```js
 // file: App.vue
 <template>
-  <GateSchemaForm :schema="schema" v-model="value" @submit="handleSubmit" />
+  <GateSchemaForm 
+    :schema="schema" 
+    v-model="value" 
+    @submit="handleSubmit" 
+  />
 </template>
 <script>
   import _ from 'gateschema'
@@ -69,7 +91,7 @@ Vue.component('GateSchemaForm', GateSchemaForm)
   export default {
     data() {
       return {
-        schema: schema.
+        schema: schema,
         value: {}
       }
     },
@@ -81,6 +103,61 @@ Vue.component('GateSchemaForm', GateSchemaForm)
   }
 </script>
 ```
+
+Using with vuex  
+```js  
+// file: store.js  
+
+import Vuex from 'vuex'  
+import {formStore} from 'gateschema-form-vue'
+
+export const store = Vuex.Store({
+  // ...
+  modules: {
+    form: formStore
+  }
+})
+```
+
+```js  
+// file: App.vue
+<template>
+  <GateSchemaForm 
+    // now the form is binding to store.form.myForm
+    name="myForm"
+    :schema="schema" 
+    :value="value" 
+    @submit="handleSubmit" 
+  />
+</template>
+<script>
+  import _ from 'gateschema'
+  // your schema
+  const schema = _.map({
+    //....
+  })
+  export default {
+    data() {
+      return {
+        schema: schema
+      }
+    },
+    computed: {
+      ...mapState({
+        form: 'form/myForm'
+      })
+    },
+    methods() {
+      handleSubmit() {
+        console.log(this.form)
+      }
+    }
+  }
+</script>
+
+
+```
+
 More Expamples on CodeSandbox  
 [![Edit gateschema-form-vue](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/0002mz7lrv?module=%2Fsrc%2FApp.vue)  
 
