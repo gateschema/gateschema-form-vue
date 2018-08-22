@@ -16,14 +16,16 @@ In this example use [iview](https://github.com/iview/iview), and [stateform-ivie
 // file: GateSchemaForm.js
 import Vue from 'vue'
 // iview css
-import import 'iview/dist/styles/iview.css'
+import 'iview/dist/styles/iview.css'
 // stateform implementation
 import createStateForm from '@stateform/iview'
 import "@stateform/iview/dist/stateform-iview.css"
 
 import { createForm } from 'gateschema-form-vue'
 
-const StateForm = createStateForm()
+const StateForm = createStateForm({
+  // stateform options
+})
 const GateSchemaForm = createForm({
   StateForm
 })
@@ -79,6 +81,8 @@ Vue.component('GateSchemaForm', GateSchemaForm)
   }
 </script>
 ```
+More Expamples on CodeSandbox  
+[![Edit gateschema-form-vue](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/0002mz7lrv?module=%2Fsrc%2FApp.vue)  
 
 ## Install  
 ```
