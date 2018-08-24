@@ -1,5 +1,5 @@
 # gateschema-form-vue  [![Build Status](https://travis-ci.org/GateSchema/gateschema-form-vue.svg?branch=master)](https://travis-ci.org/GateSchema/gateschema-form-vue)  [![Coverage Status](https://coveralls.io/repos/github/GateSchema/gateschema-form-vue/badge.svg)](https://coveralls.io/github/GateSchema/gateschema-form-vue)
-A Vue component for generating forms from GateSchema.
+A Vue component for generating forms from [gateschema-js](https://github.com/GateSchema/gateschema-js).
 
 ## Features  
 * GateSchema driven  
@@ -9,9 +9,11 @@ A Vue component for generating forms from GateSchema.
 * Able to change schema dynamically  
 * Extendible, custom form component  
 
+## How it works
+It transforms a [gateschema-js](https://github.com/GateSchema/gateschema-js) instance and the input value into a [StateForm](https://github.com/stateform/StateForm-Specification) state, and use a StateForm implemetation to display the form. 
 
 ## Quick Start  
-In this example use [iview](https://github.com/iview/iview), and [stateform-iview](https://github.com/stateform/stateform-iview) as UI layer
+In this example we use [stateform-iview](https://github.com/stateform/stateform-iview) as  [StateForm](https://github.com/stateform/StateForm-Specification) layer.
 ```js  
 // file: GateSchemaForm.js
 
@@ -158,16 +160,12 @@ export const store = Vuex.Store({
 
 ```
 
-More Expamples on CodeSandbox  
-[![Edit gateschema-form-vue](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/0002mz7lrv?module=%2Fsrc%2FApp.vue)  
+**Live Expamples on [CodeSandbox](https://codesandbox.io/s/0002mz7lrv?module=%2Fsrc%2FApp.vue)**    
 
 ## Install  
 ```
 npm install gateschema-form-vue --save  
 ```  
-
-## How it works
-It transforms a [gateschema](https://github.com/GateSchema/gateschema-js) and the input value into a [StateForm](https://github.com/stateform/StateForm-Specification) state, and passes the state to a StateForm implementation 
 
 ## Usage  
 
@@ -231,7 +229,8 @@ const schema = _
 
 ## Q&A  
 ### Custom validation ?  
-This form component is GateSchema driven. You should define your GateSchema keyword for custom validations  
+This form component is GateSchema driven. You should [define your GateSchema keyword](https://github.com/GateSchema/gateschema-js/blob/master/docs/api.md#addkeywordkeyword-keyword-msgs-msgs-void) for custom validations  
+
 ### Conditional fields ?  
 Use `switch` keyword  
 ```js  
