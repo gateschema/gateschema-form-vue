@@ -19,7 +19,8 @@ export function createDForm(options = {}) {
       return {
         activePaths: {},
         validationOptions: {
-          skipAsync: true
+          skipAsync: true,
+          useCache: true,
         },
         pathValidationOptions: {},
         // formState: null,
