@@ -160,7 +160,7 @@ export const store = Vuex.Store({
 
 ```
 
-**Live Expamples on [CodeSandbox](https://codesandbox.io/s/0002mz7lrv?module=%2Fsrc%2FApp.vue)**    
+**Live Expamples on [CodeSandbox](https://codesandbox.io/s/n50wy386nl?expanddevtools=1&module=%2Fsrc%2Fschemas.js)**    
 
 ## Install  
 ```
