@@ -1,6 +1,6 @@
 {
   "name": "gateschema-form-vue",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A Vue component for generating forms from GateSchema.",
   "keywords": [
     "Vue",
@@ -17,7 +17,7 @@
     "test": "jest",
     "test-coverage": "jest --coverage",
     "build": "rollup -c",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
   },
   "author": "William17 <superbill2012@qq.com> https://github.com/William17",
   "license": "MIT",
