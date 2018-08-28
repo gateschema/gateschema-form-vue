@@ -24,6 +24,9 @@ function createDForm(options = {}) {
           skipAsync: true,
           useCache: true,
         },
+        submitValidationOptions: {
+          useCache: true
+        },
         pathValidationOptions: {},
         // formState: null,
         // cache: {}
@@ -198,25 +201,32 @@ function createDForm(options = {}) {
         Object.keys(this.cache).forEach(key => {
           activePaths[key] = true;
         });
-        this.renderSchema(() => {
-          this.$emit('submit', this.errors);
+        this.renderSchema({
+          validationOptions: this.submitValidationOptions,
+          cb: () => {
+            this.$emit('submit', this.errors);
+          }
         });
       },
       handleReset() {
         this.$emit('reset');
       },
-      renderSchema(cb) {
+      renderSchema(options={}) {
+        const {cb,
+          validationOptions = this.validationOptions,
+          pathValidationOptions = this.pathValidationOptions
+        } = options;
         this.errors = [];
         this.cache = {};
-        const options = {
+        const transformOptions = {
           path: '/',
           value: this.value,
           rootData: this.value,
-          validationOptions: this.validationOptions,
-          pathValidationOptions: this.pathValidationOptions,
+          validationOptions,
+          pathValidationOptions,
           transform: this.transformNode,
         };
-        transformer.transform(this.schema, options, (formState) => {
+        transformer.transform(this.schema, transformOptions, (formState) => {
           this.setFormState(formState);
           return cb && cb()
         });

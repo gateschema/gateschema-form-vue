@@ -65,6 +65,9 @@ function createDForm() {
           skipAsync: true,
           useCache: true
         },
+        submitValidationOptions: {
+          useCache: true
+        },
         pathValidationOptions: {} // formState: null,
         // cache: {}
         // errors: []
@@ -254,27 +257,36 @@ function createDForm() {
         Object.keys(this.cache).forEach(function (key) {
           activePaths[key] = true;
         });
-        this.renderSchema(function () {
-          _this3.$emit('submit', _this3.errors);
+        this.renderSchema({
+          validationOptions: this.submitValidationOptions,
+          cb: function cb() {
+            _this3.$emit('submit', _this3.errors);
+          }
         });
       },
       handleReset: function handleReset() {
         this.$emit('reset');
       },
-      renderSchema: function renderSchema(cb) {
+      renderSchema: function renderSchema() {
         var _this4 = this;
 
+        var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+        var cb = options.cb,
+            _options$validationOp = options.validationOptions,
+            validationOptions = _options$validationOp === void 0 ? this.validationOptions : _options$validationOp,
+            _options$pathValidati = options.pathValidationOptions,
+            pathValidationOptions = _options$pathValidati === void 0 ? this.pathValidationOptions : _options$pathValidati;
         this.errors = [];
         this.cache = {};
-        var options = {
+        var transformOptions = {
           path: '/',
           value: this.value,
           rootData: this.value,
-          validationOptions: this.validationOptions,
-          pathValidationOptions: this.pathValidationOptions,
+          validationOptions: validationOptions,
+          pathValidationOptions: pathValidationOptions,
           transform: this.transformNode
         };
-        transformer.transform(this.schema, options, function (formState) {
+        transformer.transform(this.schema, transformOptions, function (formState) {
           _this4.setFormState(formState);
 
           return cb && cb();
