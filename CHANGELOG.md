@@ -1,3 +1,13 @@
+<a name="0.2.2"></a>
+## [0.2.2](https://github.com/GateSchema/gateschema-form-vue/compare/0.2.1...0.2.2) (2018-08-28)
+
+
+### Bug Fixes
+
+* fix submit validationOptions ([01ecf5d](https://github.com/GateSchema/gateschema-form-vue/commit/01ecf5d))
+
+
+
 <a name="0.2.1"></a>
 ## 0.2.1 (2018-08-28)
 
