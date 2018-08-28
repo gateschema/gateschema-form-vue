@@ -255,9 +255,7 @@ function createDForm() {
           activePaths[key] = true;
         });
         this.renderSchema(function () {
-          if (_this3.errors.length === 0) {
-            _this3.$emit('submit');
-          }
+          _this3.$emit('submit', _this3.errors);
         });
       },
       handleReset: function handleReset() {

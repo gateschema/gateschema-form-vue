@@ -199,9 +199,7 @@ function createDForm(options = {}) {
           activePaths[key] = true;
         });
         this.renderSchema(() => {
-          if (this.errors.length === 0) {
-            this.$emit('submit');
-          }
+          this.$emit('submit', this.errors);
         });
       },
       handleReset() {
