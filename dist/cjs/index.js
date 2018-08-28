@@ -117,7 +117,7 @@ function createDForm() {
         var errorMsg; // collect error
 
         if (error && !ignoreErrors[error.keyword]) {
-          this.errors.push([path, error]);
+          this.errors.push(error);
           errorMsg = error.msg;
         }
 
