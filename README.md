@@ -25,26 +25,7 @@ import "@stateform/iview/dist/stateform-iview.css"
 import { createForm } from 'gateschema-form-vue'
 
 // 1. creae StateForm component
-// see https://github.com/stateform/StateForm-Specification for more details
-const StateForm = createStateForm({
-  upload: {
-    handleUpload(file, cb) {
-      // custom implementation
-      setTimeout(() => {
-        cb({
-          status: 'done', // 'done' | 'error',
-          url: 'http://....'
-        })
-      }, 1000)
-    },
-    handleRemove(file) {
-
-    }
-  },
-  components: {
-    // custom components
-  }
-})
+const StateForm = createStateForm()
 // 2. create GateSchemaForm component
 const GateSchemaForm = createForm({
   StateForm
@@ -169,7 +150,37 @@ npm install gateschema-form-vue --save
 
 ## Usage  
 
-Use the `other` keyword to pass your [StateForm](https://github.com/stateform/StateForm-Specification) options.  
+### Handling upload  
+Pass your handleUpload and handleRemove method when creating StateForm
+```js
+import createStateForm from '@stateform/iview'
+import "@stateform/iview/dist/stateform-iview.css"
+const StateForm = createStateForm{
+  upload: {
+    handleUpload(file, cb) {
+      // custom implementation
+      setTimeout(() => {
+        cb({
+          status: 'done', // 'done' | 'error',
+          url: 'http://....'
+        })
+      }, 1000)
+    },
+    handleRemove(file) {
+
+    }
+  },
+  components: {
+    // custom components
+  }
+}
+
+
+```
+
+### Component properties  
+
+Use the `other` keyword to pass your [StateForm](https://github.com/stateform/StateForm-Specification) component properties.  
 
 Example  
 ```js  
@@ -232,7 +243,7 @@ const schema = _
 This form component is driven by gateschema. You should [define your GateSchema keyword](https://github.com/gateschema/gateschema-js/blob/master/docs/api.md#addkeywordkeyword-keyword-msgs-msgs-void) for custom validations  
 
 ### Conditional fields ?  
-Use `switch` keyword  
+Use `switch` keyword, see [gateschema-js](https://github.com/GateSchema/gateschema-js) for more details  
 ```js  
 const schema = _
   .map({
