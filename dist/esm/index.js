@@ -149,7 +149,12 @@ function createDForm(options = {}) {
           }
         }
         this.$nextTick(() => {
-          return noDebounce ? this.renderSchema() : this.renderSchemaDebounced()
+          const options = {
+            cb: () => {
+              this.$emit('update', this.errors);
+            }
+          };
+          return noDebounce ? this.renderSchema(options) : this.renderSchemaDebounced(options)
         });
       },
       handleUserInput(path, value, index) {

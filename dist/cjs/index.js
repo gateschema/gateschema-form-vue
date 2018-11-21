@@ -201,7 +201,12 @@ function createDForm() {
         }
 
         this.$nextTick(function () {
-          return noDebounce ? _this2.renderSchema() : _this2.renderSchemaDebounced();
+          var options = {
+            cb: function cb() {
+              _this2.$emit('update', _this2.errors);
+            }
+          };
+          return noDebounce ? _this2.renderSchema(options) : _this2.renderSchemaDebounced(options);
         });
       },
       handleUserInput: function handleUserInput(path, value, index) {

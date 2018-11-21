@@ -1,6 +1,6 @@
 {
   "name": "gateschema-form-vue",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A Vue component for generating forms from GateSchema.",
   "keywords": [
     "Vue",
@@ -27,18 +27,18 @@
     "gateschema": "^0.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-rc.1",
-    "@babel/preset-env": "^7.0.0-rc.1",
-    "@vue/test-utils": "^1.0.0-beta.24",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "@vue/test-utils": "^1.0.0-beta.25",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.4.2",
+    "babel-jest": "^23.6.0",
     "cz-conventional-changelog": "^2.1.0",
     "gateschema": "^0.2.0",
-    "jest": "^23.5.0",
+    "jest": "^23.6.0",
     "jsdom": "^11.12.0",
     "jsdom-global": "^3.0.2",
     "rollup": "^0.64.1",
-    "rollup-plugin-babel": "^4.0.0-beta.8",
+    "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-uglify": "^4.0.0",
     "vue": "^2.5.17",
     "vue-template-compiler": "^2.5.17",
@@ -50,6 +50,6 @@
     }
   },
   "dependencies": {
-    "gateschema-transformer": "^0.1.1"
+    "gateschema-transformer": "^0.1.2"
   }
 }
