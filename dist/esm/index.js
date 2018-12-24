@@ -268,6 +268,10 @@ function createDForm(options = {}) {
         handler: this.renderSchema
       });
 
+      this.$watch('value', {
+        handler: this.renderSchema
+      });
+
       this.renderSchemaDebounced = this.debounce 
         ? debounce(this.renderSchema, this.debounce) 
         : this.renderSchema;

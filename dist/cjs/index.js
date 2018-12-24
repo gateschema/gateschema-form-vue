@@ -329,6 +329,9 @@ function createDForm() {
       this.$watch('schema', {
         handler: this.renderSchema
       });
+      this.$watch('value', {
+        handler: this.renderSchema
+      });
       this.renderSchemaDebounced = this.debounce ? debounce(this.renderSchema, this.debounce) : this.renderSchema;
 
       if (this.schema) {
